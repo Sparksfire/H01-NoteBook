@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>H01 NoteBook</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="_media/style/docsify/vue.css">
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="_media/style/docsify-fontawesome/fontawesome.css" />
+  <link rel="stylesheet" href="_media/style/docsify-fontawesome/brands.css" />
+  <link rel="stylesheet" href="_media/style/docsify-fontawesome/regular.css">
+  <link rel="stylesheet" href="_media/style/docsify-fontawesome/solid.css" />
+</head>
+<style>
+  :root {
+    --docsifytabs-border-color: #ededed;
+    --docsifytabs-tab-highlight-color: purple;
+  }
+</style>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: 'H01 Notebook',
+      repo: 'https://github.com/',
+      // 加载自定义侧边栏同时开启目录功能
+      loadSidebar: true,
+      subMaxLevel: 2,
+      // 切换页面后跳转到页面顶部
+      auto2top: true,
+      // 启用相对路径
+      relativePath: true,
+      // 小屏设备下合并导航栏到侧边栏。
+      // mergeNavbar: true,
+      // load from _footer.md
+      loadFooter: true,
+      // Or load from _footer.md
+      loadFooter: '_footer.md',
+      // 侧边栏展开控制
+      sidebarDisplayLevel: 1,
+      loadNavbar: true,
+      // 抓取标题，渲染标题层级
+      maxLevel: 4,
+      // 阅读进度条
+      progress: {
+        position: "top",
+        color: "var(--theme-color,#42b983)",
+        height: "3px",
+      },
+      // 搜索
+      search: {
+        maxAge: 86400000, // Expiration time, the default one day
+        paths: 'auto', // or 'auto'
+        placeholder: 'Type to search',
+        // Localization
+        placeholder: {
+          '/zh-cn/': '搜索',
+          '/': '搜索'
+        },
+        noData: 'No Results!',
+        noData: {
+          '/zh-cn/': '找不到结果',
+          '/': 'No Results'
+        },
+        // Headline depth, 1 - 6
+        depth: 2,
+        hideOtherSidebarContent: false, // whether or not to hide other sidebar content
+        namespace: 'website-1',
+        pathNamespaces: ['/zh-cn', '/ru-ru', '/ru-ru/v1'],
+        pathNamespaces: /^(\/(zh-cn|ru-ru))?(\/(v1|v2))?/
+      },
+      tabs: {
+        persist    : true,      // default
+        sync       : false,      // default
+        theme      : 'classic', // default
+        tabComments: true,      // default
+        tabHeadings: true       // default
+      },
+      // 字数统计
+      count:{
+        countable:true,
+        fontsize:'0.9em',
+        color:'rgb(90,90,90)',
+        language:'chinese'
+      },
+      // 分页
+      // pagination: {
+      //   previousText: '上一章节',
+      //   nextText: '下一章节',
+      //   crossChapter: true,
+      //   crossChapterText: true,
+      // },
+      // 更新时间
+      timeUpdater: {
+        text: "---\nlast update time: {docsify-updated}",
+        formatUpdated: "{YYYY}/{MM}/{DD} {HH}:{mm}",
+      },
+      // 复制
+      copyCode: {
+          buttonText: {
+            // '/zh-cn/': '点击复制',
+            '/'      : '点击复制'
+          },
+          errorText: {
+            // '/zh-cn/': '错误',
+            '/'      : 'Error'
+          },
+          successText: {
+            // '/zh-cn/': '复制',
+            '/'      : 'Copied'
+          }
+        },
+      // Flexible Alerts
+      'flexible-alerts': {
+          note: {
+            label: {
+              '/de-DE/': 'Hinweis',
+              '/': 'Note'
+            }
+          },
+          tip: {
+            label: {
+              '/de-DE/': 'Tipp',
+              '/': 'Tip'
+            }
+          },
+          warning: {
+            label: {
+              '/de-DE/': 'Warnung',
+              '/': 'Warning'
+            }
+          },
+          attention: {
+            label: {
+              '/de-DE/': 'Achtung',
+              '/': 'Attention'
+            }
+          },
+          comment: {
+            label: 'Comment',
+
+            // localization
+            label: {
+              '/': 'Comment'
+            },
+
+            // Assuming that we use Font Awesome
+            icon: 'fas fa-comments',
+            className: 'note'
+          },
+          q: {
+            label: 'Quote',
+
+            label: {
+              '/': 'Q'
+            },
+
+            // Assuming that we use Font Awesome
+            icon: 'fas fa-eye',
+            className: 'quote'
+          }
+        },
+    }
+  </script>
+  </script>
+  <link rel="stylesheet" href="_media/style/gittalk/gitalk.css">
+  <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script> -->
+  <script src="_media/plugins/docsify/gitalk.js"></script>
+  <!-- <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script> -->
+  <script src="_media/plugins/gitalk/gitalk.min.js"></script>
+  <script>
+    const gitalk = new Gitalk({
+      clientID: '6153f299f671020e1d65',
+      clientSecret: '018ac6b3335737405f3c956dfbc01619363a6386',
+      repo: 'NoteBooks',
+      owner: 'Sparksfire',
+      admin: ['Sparksfire'],
+      // facebook-like distraction free mode
+      distractionFreeMode: false
+    })
+  </script>
+  <script>
+    document.body.oncopy = function () {
+      swal("复制成功 🎉",
+              "",
+              "success"); };
+  </script>
+
+  <!-- Docsify v4 -->
+  <script src="_media/plugins/docsify/docsify.min.js"></script>
+  <!-- 搜索 -->
+  <script src="_media/plugins/docsify/search.min.js"></script>
+  <!-- 图片缩放 -->
+  <script src="_media/plugins/docsify/zoom-image.min.js"></script>
+  <!-- 字数统计 -->
+  <script src="_media/plugins/docsify-count/countable.min.js"></script>
+  <!-- 分页 -->
+  <script src="_media/plugins/docsify-pagination/docsify-pagination.min.js"></script>
+  <!-- 页脚 -->
+  <script src="_media/plugins/docsify-footer/docsify-footer.js"></script>
+  <!-- Flexible Alerts -->
+  <script src="_media/plugins/flexible-alerts/docsify-plugin-flexible-alerts.min.js"></script>
+  <!-- fontawesome -->
+  <script src="_media/plugins/docsify-fontawesome/index.js"></script>
+  <!-- 侧边栏目录展开和折叠 -->
+  <!-- <script src="_media/plugins/docsify-sidebar-collapse/docsify-sidebar-collapse.min.js"></script> -->
+  <!-- 更新时间 -->
+  <script src="_media/plugins/docsify-updated/time-updater.min.js"></script>
+  <!-- docsify-tabs (latest v1.x.x) -->
+  <script src="_media/plugins/docsify-tabs/docsify-tabs.min.js"></script>
+  <!-- 代码高亮 -->
+  <script src="_media/plugins/components/prism-bash.min.js"></script>
+  <script src="_media/plugins/components/prism-yaml.min.js"></script>
+  <script src="_media/plugins/components/prism-python.min.js"></script>
+  <script src="_media/plugins/components/prism-go.min.js"></script>
+  <script src="_media/plugins/components/prism-go-module.min.js"></script>
+  <script src="_media/plugins/components/prism-powershell.min.js"></script>
+  <!-- 进度条 -->
+  <script src="_media/plugins/docsify-progress/progress.js"></script>
+  <!-- copy -->
+  <script src="_media/plugins/copy/docsify-copy-code.min.js"></script>
+</body>
+</html>
