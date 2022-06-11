@@ -30,32 +30,12 @@
   - [Harbor部署及使用](/docker/harbor.md)
   - [Docker+Jenkins+Gitlab+SonarQube+Harbor](/docker/jenkins.md)
 
-<!-- - Kubernetes
-  - Kubernetes入门
-
-    - [1.部署一个应用程序](/kubernetes/k8s-v1/level-1/1-部署第一个应用程序.md)
-    - [2.查看Pods/Nodes](/kubernetes/k8s-v1/level-1/2-查看pods-nodes.md)
-    - [3.公布应用程序](/kubernetes/k8s-v1/level-1/3-公布应用程序.md)
-    - [4.伸缩应用程序](/kubernetes/k8s-v1/level-1/4-伸缩应用程序.md)
-    - [5.执行滚动更新](/kubernetes/k8s-v1/level-1/5-执行滚动更新.md)
-    - [6.回顾kubernetes核心概念](/kubernetes/k8s-v1/level-1/6-回顾kubernetes核心概念.md)
-  - Kubernetes进阶
+- Kubernetes
   
-    - 架构
-      - [节点](/kubernetes/k8s-v1/level-2/1-node.md)
-      - [集群内通信](/kubernetes/k8s-v1/level-2/2-集群内通信.md)
+  - Kubernetes（v1.24.1)
   
-  - Kubernetes（v1.24)
-  
-    - [kubernetes安装-1](/kubernetes/k8s-v3/k8s-v3-1.md)
-    - [kubernetes安装-2](/kubernetes/k8s-v3/k8s-v3-2.md)
-  
-  - Kubernetes（v1.21)
-  
-    - [kubernetes (v1.21)简介](/kubernetes/k8s-v2/kubernetes-v1.md)
-    - [kubernetes (v1.21)安装-1](/kubernetes/k8s-v2/kubernetes-v2.md)
-    - [kubernetes (v1.21)安装-2](/kubernetes/k8s-v2/kubernetes-v2-1.md)
-  - Helm -->
+    - [kubernetes安装-1](/kubernetes/kubernetes/k8s-install-v1.md)
+    <!-- - [kubernetes安装-2](/kubernetes/k8s-v3/k8s-v3-2.md) -->
   
 - Network
 

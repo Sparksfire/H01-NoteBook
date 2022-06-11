@@ -6,7 +6,7 @@
 
 首先我们来看看Redhat官方文档中关于swap分区大小设置的建议。<a  href ="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/">官方文档</a>
 
-![swap](../_images/linux-swap.png)
+![swap](https://images.icodedream.com/images/2022/06/11/linux-swap.png))
 
 总结起来就是，如果不打算开启休眠功能，物理内存在8G以下，则swap设置为与物理内存一样大。如果物理内存在8G以上，swap空间设置为8G即可。当物理内存大于64G时，不建议开启休眠功能。
 

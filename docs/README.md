@@ -1,11 +1,3 @@
-# 前言
+<!-- ![](https://images.icodedream.com/images/2022/06/11/herd-v1.jpg) -->
 
->[!TIP] 个人文档！！！不足之处很多，谨慎阅读。。。
-
-![](https://images.icodedream.com/images/2022/06/11/herd-v1.jpg)
-
-> 没有量身定做东西，只有适合自己的。
->
-> 借鉴网上的材料，整理出适合自己的。
-> 
-> 每天进步一点点，让学习成为一种习惯！
+![vh-001.png](https://images.icodedream.com/images/2022/06/12/vh-001.png)
