@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="_media/style/docsify-fontawesome/brands.css" />
   <link rel="stylesheet" href="_media/style/docsify-fontawesome/regular.css">
   <link rel="stylesheet" href="_media/style/docsify-fontawesome/solid.css" />
+
+  <link rel="stylesheet" href="_media/plugins/collapse-sidebar/collapse-sidebar.css" />
 </head>
 <style>
   :root {
@@ -41,6 +43,7 @@
       // 侧边栏展开控制
       sidebarDisplayLevel: 1,
       loadNavbar: true,
+      mergeNavbar: true,
       // 抓取标题，渲染标题层级
       maxLevel: 4,
       // 阅读进度条
@@ -51,25 +54,10 @@
       },
       // 搜索
       search: {
-        maxAge: 86400000, // Expiration time, the default one day
-        paths: 'auto', // or 'auto'
-        placeholder: 'Type to search',
-        // Localization
-        placeholder: {
-          '/zh-cn/': '搜索',
-          '/': '搜索'
-        },
-        noData: 'No Results!',
-        noData: {
-          '/zh-cn/': '找不到结果',
-          '/': 'No Results'
-        },
-        // Headline depth, 1 - 6
-        depth: 2,
-        hideOtherSidebarContent: false, // whether or not to hide other sidebar content
-        namespace: 'website-1',
-        pathNamespaces: ['/zh-cn', '/ru-ru', '/ru-ru/v1'],
-        pathNamespaces: /^(\/(zh-cn|ru-ru))?(\/(v1|v2))?/
+        paths: 'auto',
+        placeholder: '搜索',
+        noData: '找不到结果',
+        depth: 3,
       },
       tabs: {
         persist    : true,      // default
@@ -85,33 +73,14 @@
         color:'rgb(90,90,90)',
         language:'chinese'
       },
-      // 分页
-      // pagination: {
-      //   previousText: '上一章节',
-      //   nextText: '下一章节',
-      //   crossChapter: true,
-      //   crossChapterText: true,
-      // },
       // 更新时间
-      timeUpdater: {
-        text: "---\nlast update time: {docsify-updated}",
-        formatUpdated: "{YYYY}/{MM}/{DD} {HH}:{mm}",
-      },
+      formatUpdated: "{YYYY}.{MM}.{DD} {HH}:{mm}",
       // 复制
       copyCode: {
-          buttonText: {
-            // '/zh-cn/': '点击复制',
-            '/'      : '点击复制'
-          },
-          errorText: {
-            // '/zh-cn/': '错误',
-            '/'      : 'Error'
-          },
-          successText: {
-            // '/zh-cn/': '复制',
-            '/'      : 'Copied'
-          }
-        },
+        buttonText : 'Copy',
+        errorText  : 'Error!',
+        successText: 'Success!'
+      },
       // Flexible Alerts
       'flexible-alerts': {
           note: {
@@ -162,8 +131,44 @@
             className: 'quote'
           }
         },
+        plugins: [
+          function (hook, vm) {
+            hook.beforeEach(function (html) {
+              // fix relative links in readme
+              if (/githubusercontent\.com\/.*\/README.md/i.test(vm.route.file)) {
+                const baseUrl = vm.route.file.replace(/(.*)\/README.md/i, "$1/");
+
+                html = html
+                  .replace(/src="((?!http).*?)"/gim, 'src="' + baseUrl + '$1"')
+                  .replace(/\[(.*)\]\((((?!http).*?))\)/gim, "[$1](" + baseUrl + "$2)");
+              }
+
+              // add edit page link
+              const isRaw = /githubusercontent\.com/.test(vm.route.file);
+              let url = "https://github.com/Sparksfire/H01-NoteBook/tree/master/docs/" + vm.route.file;
+
+              if (isRaw) {
+                url = vm.route.file.replace(
+                  /https:\/\/raw\.githubusercontent\.com\/(\S+?)\/(\S+?)\/(\S+?)\/(.*)/,
+                  "https://github.com/$1/$2/blob/$3/$4"
+                );
+              }
+
+              html =
+                html +
+                "\n----\n" +
+                (isRaw ? "" : "Last updated time {docsify-updated} ") +
+                '<a href="' +
+                url +
+                '" target="_black" rel="noopener noreferrer">:memo:Edit document</a>\n';
+
+              return html;
+            });
+          },
+        ],
     }
   </script>
+
   </script>
   <link rel="stylesheet" href="_media/style/gittalk/gitalk.css">
   <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script> -->
@@ -172,20 +177,14 @@
   <script src="_media/plugins/gitalk/gitalk.min.js"></script>
   <script>
     const gitalk = new Gitalk({
-      clientID: '6153f299f671020e1d65',
-      clientSecret: '018ac6b3335737405f3c956dfbc01619363a6386',
-      repo: 'NoteBooks',
+      clientID: '46e6fb6ce74a85c538d4',
+      clientSecret: 'ca01e151bc8256db832a4300af777268e8328b02',
+      repo: 'H01-NoteBook',
       owner: 'Sparksfire',
       admin: ['Sparksfire'],
       // facebook-like distraction free mode
       distractionFreeMode: false
     })
-  </script>
-  <script>
-    document.body.oncopy = function () {
-      swal("复制成功 🎉",
-              "",
-              "success"); };
   </script>
 
   <!-- Docsify v4 -->
@@ -194,6 +193,8 @@
   <script src="_media/plugins/docsify/search.min.js"></script>
   <!-- 图片缩放 -->
   <script src="_media/plugins/docsify/zoom-image.min.js"></script>
+  <!-- copy -->
+  <script src="_media/plugins/copy/docsify-copy-code.min.js"></script>
   <!-- 字数统计 -->
   <script src="_media/plugins/docsify-count/countable.min.js"></script>
   <!-- 分页 -->
@@ -206,8 +207,6 @@
   <script src="_media/plugins/docsify-fontawesome/index.js"></script>
   <!-- 侧边栏目录展开和折叠 -->
   <!-- <script src="_media/plugins/docsify-sidebar-collapse/docsify-sidebar-collapse.min.js"></script> -->
-  <!-- 更新时间 -->
-  <script src="_media/plugins/docsify-updated/time-updater.min.js"></script>
   <!-- docsify-tabs (latest v1.x.x) -->
   <script src="_media/plugins/docsify-tabs/docsify-tabs.min.js"></script>
   <!-- 代码高亮 -->
@@ -219,7 +218,8 @@
   <script src="_media/plugins/components/prism-powershell.min.js"></script>
   <!-- 进度条 -->
   <script src="_media/plugins/docsify-progress/progress.js"></script>
-  <!-- copy -->
-  <script src="_media/plugins/copy/docsify-copy-code.min.js"></script>
+
+  <script src="_media/plugins/autoLink/autoLink.js"></script>
+  <script src="_media/plugins/collapse-sidebar/collapse-sidebar.js"></script>
 </body>
 </html>
